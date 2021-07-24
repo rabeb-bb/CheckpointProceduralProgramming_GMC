@@ -8,18 +8,28 @@ BEGIN
     END_FOR
     write(ps)
 END
+FUNCTION dot_product(v1,v2: ARRAY_OF integer[3], VAR ps: INTEGER) : INTEGER 
+VAR
+    set_declarations
+BEGIN
+     FOR i FROM 0 TO 2 DO
+       ps:=ps+ v1[i]*v2[i]
+    END_FOR
+    RETURN ps ;
+END
 ALGORITHM Dot_Product
 VAR
     vectors : ARRAY_OF integer[50][3];
     i,j: INTEGER;
+    ps: INTEGER;
 BEGIN
-     
-      FOR i FROM 0 TO n-1 DO
+    FOR i FROM 0 TO n-1 DO
         read(vectors[i])
     END_FOR
     FOR i FROM 0 TO n-2 DO
        FOR j FROM i+1 TO n-1  DO
-           IF (dot_product(vectors[i],vectors[j])=0) THEN
+        ps:=dot_product(vectors[i],vectors[j])
+           IF (ps:=0) THEN
                write("the vectors ",vectors[i]," and ",vectors[j], " are orthogonal")
            END_IF
        END_FOR
