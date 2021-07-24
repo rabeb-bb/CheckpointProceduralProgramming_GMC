@@ -1,0 +1,23 @@
+PROCEDURE dot_product(v1,v2: ARRAY_OF integer[3])
+VAR
+    i,j: INTEGER;
+    ps: INTEGER;
+BEGIN
+    FOR i FROM 0 TO 2 DO
+       ps:=ps+ v1[i]*v2[i]
+    END_FOR
+    write(ps)
+END
+ALGORITHM Dot_Product
+VAR
+    vectors : ARRAY_OF integer[50][3];
+BEGIN
+
+    FOR i FROM 0 TO n-2 DO
+       FOR j FROM i+1 TO n-1  DO
+           IF (dot_product(vectors[i],vectors[j])=0) THEN
+               write("the vectors ",vectors[i]," and ",vectors[j], " are orthogonal")
+           END_IF
+       END_FOR
+    END_FOR
+END
