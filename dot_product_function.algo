@@ -1,16 +1,7 @@
-PROCEDURE dot_product(v1,v2: ARRAY_OF integer[3])
-VAR
-    i,j: INTEGER;
-    ps: INTEGER;
-BEGIN
-    FOR i FROM 0 TO 2 DO
-       ps:=ps+ v1[i]*v2[i]
-    END_FOR
-    write(ps)
-END
 FUNCTION dot_product(v1,v2: ARRAY_OF integer[3], VAR ps: INTEGER) : INTEGER 
 VAR
-    set_declarations
+     i,j: INTEGER;
+    ps: INTEGER;
 BEGIN
      FOR i FROM 0 TO 2 DO
        ps:=ps+ v1[i]*v2[i]
