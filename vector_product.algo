@@ -1,7 +1,6 @@
-PROCEDURE dot_product(v1,v2: ARRAY_OF integer[3])
+PROCEDURE dot_product(v1,v2: ARRAY_OF integer[3], VAR ps: INTEGER)
 VAR
-    i,j: INTEGER;
-    ps: INTEGER;
+    i: INTEGER;
 BEGIN
     FOR i FROM 0 TO 2 DO
        ps:=ps+ v1[i]*v2[i]
@@ -19,9 +18,14 @@ BEGIN
     END_FOR
     FOR i FROM 0 TO n-2 DO
        FOR j FROM i+1 TO n-1  DO
-           IF (dot_product(vectors[i],vectors[j])=0) THEN
+        IF (vectors[i].length=vectors[j].length) THEN
+            dot_product(vectors[i],vectors[j], ps)
+           IF (ps=0) THEN
                write("the vectors ",vectors[i]," and ",vectors[j], " are orthogonal")
            END_IF
+        ELSE
+           Write ("product is invalid")
+        END_IF
        END_FOR
     END_FOR
 END

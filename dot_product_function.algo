@@ -1,12 +1,12 @@
-FUNCTION dot_product(v1,v2: ARRAY_OF integer[3], VAR ps: INTEGER) : INTEGER 
+FUNCTION dot_product(v1,v2: ARRAY_OF integer[3]) : INTEGER 
 VAR
-     i,j: INTEGER;
+     i: INTEGER;
     ps: INTEGER;
 BEGIN
-     FOR i FROM 0 TO 2 DO
-       ps:=ps+ v1[i]*v2[i]
-    END_FOR
-    RETURN ps ;
+        FOR i FROM 0 TO 2 DO
+        ps:=ps+ v1[i]*v2[i]
+        END_FOR
+        RETURN ps ;
 END
 ALGORITHM Dot_Product
 VAR
@@ -18,11 +18,15 @@ BEGIN
         read(vectors[i])
     END_FOR
     FOR i FROM 0 TO n-2 DO
-       FOR j FROM i+1 TO n-1  DO
-        ps:=dot_product(vectors[i],vectors[j])
+        IF (vectors[i].length=vectors[j].length) THEN
+         FOR j FROM i+1 TO n-1  DO
+            ps:=dot_product(vectors[i],vectors[j])
            IF (ps:=0) THEN
                write("the vectors ",vectors[i]," and ",vectors[j], " are orthogonal")
            END_IF
-       END_FOR
+         END_FOR
+        ELSE
+            Write ("product is invalid")
+        END_IF
     END_FOR
 END
